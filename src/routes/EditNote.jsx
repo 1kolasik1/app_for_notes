@@ -37,38 +37,47 @@ export default function EditNote() {
   };
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row gap-[35%]">
+      <div className="flex justify-center sm:justify-start flex-row gap-0 sm:gap-[35%]">
         <Link
           to="/notes"
           className="bg-stone-200 text-xl  text-center ml-[25px]"
         >
-          <div className="px-8 py-2 text-xl bg-stone-200">Back</div>
+          <div className="hidden sm:block px-8 py-2 text-xl bg-stone-200">
+            Back
+          </div>
         </Link>
         <div className="text-5xl font-medium">Edit Note</div>
       </div>
-      <div>
+      <div className="flex flex-col justify-center sm:block">
         <input
           type="text"
-          className="ml-[22%] w-[50%] h-[50px] px-4 mt-[20px] bg-stone-200 text-3xl mx-2.5"
+          className="ml-[2vh] sm:ml-[22%] w-[80%] sm:w-[50%] h-[50px] px-4 mt-[20px] bg-stone-200 text-3xl"
           placeholder="Note"
           value={title}
           onChange={handleSetTitle}
         />
         <textarea
           type="text"
-          className="ml-[22%] w-[50%]  h-[350px] t py-2 px-4 mt-5 bg-stone-200 text-3xl  "
+          className="ml-[2vh] sm:ml-[22%] w-[80%] sm:w-[50%]  h-[350px] t py-2 px-4 mt-5 bg-stone-200 text-3xl  "
           placeholder="Note text"
           value={body}
           onChange={handleSetBody}
         ></textarea>
       </div>
-      <button>Back</button>
-      <button
-        className="text-2xl bg-stone-200 mx-[40%] py-2 px-10 "
-        onClick={handleSave}
-      >
-        Save
-      </button>
+      <div className="flex justify-center">
+        <Link
+          to={"/notes"}
+          className="block sm:hidden text-2xl bg-stone-200 mt-[2vh] mx-[10%] py-[1vh] px-[2vh]"
+        >
+          Back
+        </Link>
+        <button
+          className="text-2xl bg-stone-200 mt-[2vh] mx-[10%] py-[1vh] px-[2vh]"
+          onClick={handleSave}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 }

@@ -25,7 +25,7 @@ function Notes() {
       .then((r) => setNotes(r));
   }, [user.id]);
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col">
       <div className="text-5xl font-medium">Notes</div>
       <Link
         to={`/createNote`}
@@ -36,30 +36,28 @@ function Notes() {
       {arrNotes.map((note) => (
         <div
           key={note.id}
-          className="flex justify-between bg-stone-200 mt-5 mx-0 sm:mx-[1vh]"
+          className="flex bg-stone-200 mt-5 mx-0 sm:mx-[1vh] max-w-full px-2"
         >
-          <Link to={`/note/${note.id}`}>
-            <input
-              type="text"
-              value={note.title}
-              readOnly={true}
-              className="bg-stone-100 py-3 px-4 text-2xl"
-            ></input>
+          <Link
+            to={`/note/${note.id}`}
+            className="text-2xl bg-stone-200 pt-2 pb-2 pl-[1vh] pr-5 underline"
+          >
+            {note.title}
           </Link>
-          <Link to={`/editNote/${note.id}`} className="flex ">
-            <img
-              alt="icon"
-              className="w-10 sm:w-[5vh]"
-              src="https://w7.pngwing.com/pngs/848/51/png-transparent-compose-create-edit-edit-file-office-pencil-writing-creativ-mini-icon-general-office-icon.png"
-            ></img>
-          </Link>
-          <button onClick={() => handleDelete(note.id)}>
-            <img
-              alt="icon"
-              className="w-10 sm:w-[5vh]"
-              src="https://thenounproject.com/api/private/icons/1234819/edit/?backgroundShape=SQUARE&backgroundShapeColor=%23000000&backgroundShapeOpacity=0&exportSize=752&flipX=false&flipY=false&foregroundColor=%23000000&foregroundOpacity=1&imageFormat=png&rotation=0&token=gAAAAABjkb3XKmrqk9AfwxPj14VWYxSvxiGlVWWpEjgNE34cF5XrZptr5tm4syGbK96xQ7EOFWnfXVmLG13mlexQ7bZt99WufQ%3D%3D"
-            ></img>
-          </button>
+          <div className="flex gap-2 ml-auto">
+            <Link
+              to={`/editNote/${note.id}`}
+              className="w-[5vh] h-[5vh]  sm:w-[6vh] sm:h-[6vh]"
+            >
+              <img alt="icon" className="" src="/edit.png"></img>
+            </Link>
+            <button
+              onClick={() => handleDelete(note.id)}
+              className="w-[5vh] h-[5vh] sm:w-[6vh] sm:h-[6vh]"
+            >
+              <img alt="icon" className="" src="/delete.png"></img>
+            </button>
+          </div>
         </div>
       ))}
     </div>

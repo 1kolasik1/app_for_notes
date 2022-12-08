@@ -23,24 +23,28 @@ function Note() {
   };
   return (
     <div className="flex flex-col justify-center">
-      <div className="hidden sm:flex flex-row gap-[25%]">
+      <div className="flex gap-0 ml-[5vh] sm:ml-0 sm:gap-[25%]">
         <Link to="/notes">
-          <div className="ml-[10px] px-8 py-5 text-xl bg-stone-200">Back</div>
+          <div className="hidden sm:block ml-[10px] px-8 py-5 text-xl bg-stone-200">
+            Back
+          </div>
         </Link>
-        <div className="text-5xl align-center font-medium">{note.title}</div>
+        <div className="flex text-2xl sm:text-5xl items-center font-medium">
+          {note.title}
+        </div>
         <div className="hidden sm:flex gap-10">
           <Link to={`/editNote/${note.id}`} className="flex ">
             <img
               alt="icon"
               className="w-[80px] mr-[50px]"
-              src="https://w7.pngwing.com/pngs/848/51/png-transparent-compose-create-edit-edit-file-office-pencil-writing-creativ-mini-icon-general-office-icon.png"
+              src="/edit.png"
             ></img>{" "}
           </Link>
           <button onClick={() => handleDelete(note.id)}>
             <img
               alt="icon"
               className="w-[80px] mr-[50px]"
-              src="https://w7.pngwing.com/pngs/894/954/png-transparent-delete-forever-ic-google-material-design-3-icon.png"
+              src="/delete.png"
             ></img>
           </button>
         </div>
@@ -56,18 +60,10 @@ function Note() {
       </div>
       <div className="flex mt-[5vh] sm:hidden justify-between">
         <Link to={`/editNote/${note.id}`} className="flex ">
-          <img
-            alt="icon"
-            className="w-[10vh]"
-            src="https://w7.pngwing.com/pngs/848/51/png-transparent-compose-create-edit-edit-file-office-pencil-writing-creativ-mini-icon-general-office-icon.png"
-          ></img>{" "}
+          <img alt="icon" className="w-[10vh]" src="/edit.png"></img>{" "}
         </Link>
         <button onClick={() => handleDelete(note.id)}>
-          <img
-            alt="icon"
-            className="w-[10vh] "
-            src="https://w7.pngwing.com/pngs/894/954/png-transparent-delete-forever-ic-google-material-design-3-icon.png"
-          ></img>
+          <img alt="icon" className="w-[10vh] " src="/delete.png"></img>
         </button>
       </div>
       <div className="flex justify-center w-[100%] sm:hidden">
