@@ -8,19 +8,26 @@ function Notes() {
   const [notes, setNotes] = useState([]);
   const arrNotes = [...notes];
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/notes/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify(notes),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((response) => response.json());
-    fetch(`http://localhost:5000/notes?userId=${user.id}`)
+    await fetch(
+      `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes/${id}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify(notes),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((response) => response.json());
+    fetch(
+      `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes?userId=${user.id}`
+    )
       .then((r) => r.json())
       .then((r) => setNotes(r));
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/notes?userId=${user.id}`)
+    fetch(
+      `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes?userId=${user.id}`
+    )
       .then((r) => r.json())
       .then((r) => setNotes(r));
   }, [user.id]);

@@ -3,9 +3,9 @@ import { useUserContext } from "../components/userContext";
 import { useCallback, useState } from "react";
 
 export const loader = async () => {
-  const notes = await fetch(`http://localhost:5000/notes`).then((r) =>
-    r.json()
-  );
+  const notes = await fetch(
+    `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes`
+  ).then((r) => r.json());
   return { notes };
 };
 export default function CreateNote() {
@@ -32,13 +32,16 @@ export default function CreateNote() {
       id: max + 1,
     };
 
-    await fetch(`http://localhost:5000/notes`, {
-      method: "POST",
-      body: JSON.stringify(note),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
+    await fetch(
+      `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes`,
+      {
+        method: "POST",
+        body: JSON.stringify(note),
+        headers: {
+          "Content-type": "application/json",
+        },
+      }
+    )
       .then((r) => r.json())
       .then(() => {
         navigate(`/note/${note.id}`);

@@ -14,7 +14,9 @@ function Login() {
   const handleSetPassword = useCallback((e) => setPassword(e.target.value), []);
 
   const handleLogin = useCallback(() => {
-    fetch(`http://localhost:5000/users?email=${email}&password=${password}`)
+    fetch(
+      `https://my-json-server.typicode.com/1kolasik1/dbfornotes/users?email=${email}&password=${password}`
+    )
       .then((r) => r.json())
       .then((users) => {
         if (users.length === 1) {

@@ -25,13 +25,16 @@ function Register() {
       createdAt: new Date().toLocaleString(),
     };
     password === repeat && email !== "" && password !== ""
-      ? fetch("http://localhost:5000/users", {
-          method: "POST",
-          body: JSON.stringify(user),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }).then(() => {
+      ? fetch(
+          "https://my-json-server.typicode.com/1kolasik1/dbfornotes/users",
+          {
+            method: "POST",
+            body: JSON.stringify(user),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        ).then(() => {
           navigate("/login");
         })
       : alert("Пожалуйста,перепроверьте введенные данные");

@@ -3,9 +3,9 @@ import { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 
 export const loader = async ({ params: { id } }) => {
-  const note = await fetch(`http://localhost:5000/notes/${id}`).then((r) =>
-    r.json()
-  );
+  const note = await fetch(
+    `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes/${id}`
+  ).then((r) => r.json());
   return { note };
 };
 export default function EditNote() {
@@ -23,13 +23,16 @@ export default function EditNote() {
       body: body,
       title: title,
     };
-    await fetch(`http://localhost:5000/notes/${note.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updateNote),
-    })
+    await fetch(
+      `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes/${note.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateNote),
+      }
+    )
       .then((response) => response.json())
       .then(() => {
         navigate(`/note/${note.id}`);

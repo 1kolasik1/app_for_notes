@@ -1,21 +1,24 @@
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 export const loader = async ({ params: { id } }) => {
-  const note = await fetch(`http://localhost:5000/notes/${id}`).then((r) =>
-    r.json()
-  );
+  const note = await fetch(
+    `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes/${id}`
+  ).then((r) => r.json());
   return { note };
 };
 function Note() {
   const { note } = useLoaderData();
   const navigate = useNavigate();
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:5000/notes/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify(note),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    await fetch(
+      `https://my-json-server.typicode.com/1kolasik1/dbfornotes/notes/${id}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify(note),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => response.json())
       .then(() => {
         navigate("/notes");
