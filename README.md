@@ -1,4 +1,9 @@
 # App for notes
+
+The app for notes by React
+
+![project](./notes.gif)
+
 ## Technologies
 
 * React
